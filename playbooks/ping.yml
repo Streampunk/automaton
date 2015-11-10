@@ -1,0 +1,7 @@
+---
+- hosts: timeservers
+  remote_user: streampunk
+  sudo: yes
+  tasks:
+    - name: test connection
+      ping:
