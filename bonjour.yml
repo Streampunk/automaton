@@ -1,0 +1,8 @@
+---
+- hosts: windows
+  any_errors_fatal: false
+  tasks:
+    - name: install bonjour
+      win_chocolatey:
+        name: bonjour
+    - win_reboot:

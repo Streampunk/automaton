@@ -1,0 +1,9 @@
+---
+- hosts: windows
+  tasks:
+    - name: install nodejs 6
+      win_chocolatey:
+        name: nodejs.install
+        version: 6.9.1
+        force: true
+        upgrade: true

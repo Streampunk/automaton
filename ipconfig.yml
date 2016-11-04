@@ -1,0 +1,7 @@
+- name: test raw module
+  hosts: windows
+  tasks:
+    - name: run dir
+      raw: echo
+      register: dir
+    - debug: var=dir

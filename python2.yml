@@ -1,0 +1,7 @@
+---
+- hosts: windows
+  any_errors_fatal: false
+  tasks:
+    - name: install python2
+      win_chocolatey:
+        name: python2

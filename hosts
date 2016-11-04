@@ -1,0 +1,5 @@
+[windows_admin]
+nucty_admin ansible_host=nucty.local
+
+[windows_local]
+nucty_local ansible_host=nucty.local ansible_user=nucty

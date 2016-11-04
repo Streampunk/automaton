@@ -1,0 +1,8 @@
+---
+- hosts: windows
+  tasks:
+    - name: remove nodejs
+      win_chocolatey:
+        name: nodejs.install
+        state: absent
+        force: true

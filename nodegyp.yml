@@ -1,0 +1,7 @@
+---
+- hosts: windows_local
+  become: nucty
+  tasks:
+  - win_shell: npm install -g node-gyp
+    register: fred
+  - debug: var=fred

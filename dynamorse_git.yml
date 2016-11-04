@@ -1,0 +1,17 @@
+---
+- hosts: windows_local
+  become: nucty
+  tasks:
+  - win_chocolatey:
+      name: git
+  - win_shell: git clone https://github.com/Streampunk/dynamorse.git
+    register: fred
+    args:
+      chdir: Documents/
+      creates: dynamorse
+    ignore_errors: true
+  - win_shell: npm install
+    register: ginger
+    args:
+      chdir: Documents/dynamorse
+  - debug: var=ginger
