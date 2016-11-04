@@ -1,7 +1,0 @@
----
-- hosts: rpis
-  remote_user: streampunk
-  sudo: yes
-  tasks:
-    - name: Update packages
-      apt: update_cache=yes
