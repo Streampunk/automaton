@@ -92,7 +92,19 @@ On many Windows client systems, the Windows administrator account is disabled by
 
 ### Set up Windows Remote Management
 
-Powershell needs to be configured to allow remote access. This can be achieved using this script, which is included with this distribution as a file.  
+Powershell needs to be configured to allow remote access. This can be achieved using [this script](https://github.com/ansible/ansible/blob/devel/examples/scripts/ConfigureRemotingForAnsible.ps1), which is included with this distribution as a [file](./windows_config/ConfigureRemotingForAnsible.ps1). 
+
+To run this file, the simplest way is:
+
+1. Run Powershell as admininstrator. One way to do this is type "Powershell" in Cortana, right click "Windows Powershell" and choose "Run as administrator". 
+2. Copy the contents of https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1 with Ctrl-C.
+3. Paste the result into the Powershell window with Ctrl-V.
+
+An alternative approach is:
+
+1. Run Powershell as admininstrator or a command prompt with Administrator privileges. One way to do this is type "Powershell" in Cortana, right click "Windows Powershell" and choose "Run as administrator". 
+2. Copy the `[./windows_config/ConfigureRemotingForAnsible.ps1](./windows_config/ConfigureRemotingForAnsible.ps1)` file into the local folder.
+3. Run `powershell.exe -File ./windows_config/ConfigureRemotingForAnsible.ps1`. Note that you may need to configure powershell execution policy. 
 
 For further details, see the [Ansible Windows System Prep](http://docs.ansible.com/ansible/intro_windows.html#windows-system-prep) instructions.
 
