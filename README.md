@@ -17,7 +17,7 @@ Ansible allows you to declare the state that you want your systems to be in and 
   * For linux-based systems, enable `ssh` access.
   * For windows systems, configure [winrm](https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx) access to `powershell`.
   
-Ansible works by making _plays_, where a play provisions a nominated group of machines (_hosts_) with the software you want to install, enables the OS features, sets up users, starts web services, sets up firewall rules, copies on files etc. etc.. A _play_ is described in a _playbook_, a YAML file that describes a set of _tasks_ that need to run to complete the play. 
+Ansible works by making _plays_, where a play provisions a nominated group of machines (_hosts_) with the software you want to install, enables the OS features, sets up users, starts web services, sets up firewall rules, copies on files etc. etc.. A _play_ is described in a _playbook_, a [YAML](https://en.wikipedia.org/wiki/YAML) file that describes a set of _tasks_ that need to run to complete the play. 
 
 In its simplest form, a task is just a command to run on the remote machine. The real power comes with the fact that what is actually happenning with each task is that ansible is writing a python script, copying it over to the remote machine and executing it. This script gathers _facts_ about the machine that can be used as variables to alter the way the script runs, such as installing 32-bit or 64-bit versions of a package as appropriate to the architecture. The programme also registers the result of running the task. A set of pre-configured modules provide higher level functions, such as only installing software that is not already present or only copying on files that need to be copied by computing checksums.
   
@@ -43,7 +43,14 @@ vagrant up --provider virtualbox
   This does a lot of things, including downloading a base VM if one is not available, configuring network interfaces, installing ansible 
   and other dependencies via Ubuntu package management inside the VM and setting up ssh certificates.
   
-* Login to the virtual machine
+* Login to the virtual machine and change to the vagrant files folder
+
+```
+vagrant ssh
+cd /vagrant
+```
+
+
 
 
 
