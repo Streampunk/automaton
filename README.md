@@ -1,2 +1,100 @@
 # automaton
-Scripts for building PTP clockwork in a JT-NM style.
+
+The automaton provides automatic provisionning of software prerequisites required for running other Streampunk software and related applications. This is a prototype [ansible](https://www.ansible.com/) configuration that can be used to remotely deploy software dependencies on Windows and Linux systems. 
+
+A [vagrant](https://www.vagrantup.com/) box configuration file is included that creates a virtual machine that runs an ansible controller, allowing a Windows host to be used as an ansible controller.
+
+This is a prototype and example configuration only. Some of the details are specific to a PoC activity but are provided as a guide to the kind of ansible plays you might want to configure in your own environment. It will be necessary to change these files to be able to used this configuration. In particular, files containing passwords have been encypted meaning this configuration will not work directly out-of-the-box.
+
+The notes provided here are in addition to the [ansible documentation](http://docs.ansible.com/ansible/index.html) and should be read alongside that. Below you will find what amounts to a quick start description that is specific to the way that Streampunk systems are being deployed in small scale environments.
+
+## Basics
+
+Ansible allows you to declare the state that you want your systems to be in and _make it so_. To do this, you:
+
+1. Nominate __one__ system in your infrastructure to be a _controller_.
+2. On all other systems, setup remote access to enable script-based provissioning:
+  * For linux-based systems, enable `ssh` access.
+  * For windows systems, configure [winrm](https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx) access to `powershell`.
+  
+Ansible works by making _plays_, where a play provisions a nominated group of machines (_hosts_) with the software you want to install, enables the OS features, sets up users, starts web services, sets up firewall rules, copies on files etc. etc.. A _play_ is described in a _playbook_, a [YAML](https://en.wikipedia.org/wiki/YAML) file that describes a set of _tasks_ that need to run to complete the play. 
+
+In its simplest form, a task is just a command to run on the remote machine. The real power comes with the fact that what is actually happenning with each task is that ansible is writing a python script, copying it over to the remote machine and executing it. This script gathers _facts_ about the machine that can be used as variables to alter the way the script runs, such as installing 32-bit or 64-bit versions of a package as appropriate to the architecture. The programme also registers the result of running the task. A set of pre-configured modules provide higher level functions, such as only installing software that is not already present or only copying on files that need to be copied by computing checksums.
+  
+## Controller
+
+### Installation on Windows
+
+To run a controller on Windows, you need to install and configure a virtual machine. This can be achieved with a combination of vagrant and either Hyper-V or Oracle's VirtualBox. The following instructions assume the use of VirtualBox.
+
+* Install vagrant on your system using [their download](https://www.vagrantup.com/downloads.html).
+* Install VirtualBox on your systems using [their download](https://www.virtualbox.org/wiki/Downloads). It may be a good idea to update your version of virtualbox.
+* Extract this github project to a folder on your computer. You may need to install git or )[download a zip version](https://github.com/Streampunk/automaton/archive/master.zip), for example:
+```
+cd Documents
+git clone https://github.com/Streampunk/automaton.git
+cd automaton
+```
+
+* Set up, provision and run the controller VM with:
+```
+vagrant up --provider virtualbox
+```
+  This does a lot of things, including downloading a base VM if one is not available, configuring network interfaces, installing ansible 
+  and other dependencies via Ubuntu package management inside the VM and setting up ssh certificates.
+  
+* Login to the virtual machine and change to the vagrant files folder
+```
+vagrant ssh
+cd /vagrant
+```
+
+* Check that ansible is installed and available with ```ansible --version```.
+
+### Installation on Linux
+
+Follow the [ansible instructions](http://docs.ansible.com/ansible/intro_installation.html) for your platform. 
+
+To add support for controlling Windows hosts:
+
+```
+pip install "pywinrm>=0.1.1"
+```
+
+### Installation on Mac
+
+Follow the [Mac-specific instructions from ansible](http://docs.ansible.com/ansible/intro_installation.html#latest-releases-on-mac-osx) or the [guide from Vladhaus](https://valdhaus.co/writings/ansible-mac-osx/). As a homebrew user, I find the following to work well:
+
+```
+brew install ansible
+```
+
+To add support for controlling Windows hosts:
+
+```
+pip install "pywinrm>=0.1.1"
+```
+
+## Windows hosts
+
+For each host, the machines you want to control including the remote installation and management of consoles, must do two things:
+
+1. Enable the administrator account if it is not already enabled and set a password. This allows remote execution of actions that require Administrator priveleges.
+2. Set up the [Windows Remote Management](https://msdn.microsoft.com/en-us/library/aa384291(v=vs.85).aspx) system with certificates that enable external remote control from ansible.
+
+### Enable the administrator account
+
+On many Windows client systems, the Windows administrator account is disabled by default. It can be enabled to allow Ansible to remotely perform operations that require Administrator privileges. These are the instructions for how to do that.
+
+1. Open a Windows Command Prompt as Administrator. One way to do this is to right-click the Windows icon and select "Command Prompt (Admin)". Say Yes to any security prompt.
+2. Type `net user Administrator /active:yes`.
+3. If that is successful, set a password for the Administrator with `net user Administrator *`.
+
+### Set up Windows Remote Management
+
+Powershell needs to be configured to allow remote access. This can be achieved using this script, which is included with this distribution as a file.  
+
+For further details, see the [Ansible Windows System Prep](http://docs.ansible.com/ansible/intro_windows.html#windows-system-prep) instructions.
+
+
+
