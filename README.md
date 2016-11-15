@@ -1,2 +1,2 @@
 # automaton
-Scripts for building PTP clockwork in a JT-NM style. 
+Scripts for building PTP clockwork in a JT-NM style.

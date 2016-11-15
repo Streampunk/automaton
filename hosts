@@ -1,5 +1,2 @@
-[windows_admin]
-nucty_admin ansible_host=nucty.local
-
-[windows_local]
-nucty_local ansible_host=nucty.local ansible_user=nucty
+[windows_local_git]
+lemarr_local ansible_host=lemarr.local ansible_user=sparkpunk ansible_pass=ReamStri72
