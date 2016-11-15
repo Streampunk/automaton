@@ -1,2 +1,3 @@
-[windows_local_git]
-lemarr_local ansible_host=lemarr.local ansible_user=sparkpunk ansible_pass=ReamStri72
+[windows_admin]
+ping_admin ansible_host=nucty.local ansible_user=Administrator
+ping_local ansible_host=nucty.local ansible_user=nucty
