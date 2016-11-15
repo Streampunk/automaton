@@ -44,11 +44,58 @@ vagrant up --provider virtualbox
   and other dependencies via Ubuntu package management inside the VM and setting up ssh certificates.
   
 * Login to the virtual machine and change to the vagrant files folder
-
 ```
 vagrant ssh
 cd /vagrant
 ```
+
+* Check that ansible is installed and available with ```ansible --version```.
+
+### Installation on Linux
+
+Follow the [ansible instructions](http://docs.ansible.com/ansible/intro_installation.html) for your platform. 
+
+To add support for controlling Windows hosts:
+
+```
+pip install "pywinrm>=0.1.1"
+```
+
+### Installation on Mac
+
+Follow the [Mac-specific instructions from ansible](http://docs.ansible.com/ansible/intro_installation.html#latest-releases-on-mac-osx) or the [guide from Vladhaus](https://valdhaus.co/writings/ansible-mac-osx/). As a homebrew user, I find the following to work well:
+
+```
+brew install ansible
+```
+
+To add support for controlling Windows hosts:
+
+```
+pip install "pywinrm>=0.1.1"
+```
+
+## Windows hosts
+
+For each host, the machines you want to control including the remote installation and management of consoles, must do two things:
+
+1. Enable the administrator account if it is not already enabled and set a password. This allows remote execution of actions that require Administrator priveleges.
+2. Set up the [Windows Remote Management](https://msdn.microsoft.com/en-us/library/aa384291(v=vs.85).aspx) system with certificates that enable external remote control from ansible.
+
+### Enable the administrator account
+
+On many Windows client systems, the Windows administrator account is disabled by default. It can be enabled to allow Ansible to remotely perform operations that require Administrator privileges. These are the instructions for how to do that.
+
+1. Open a Windows Command Prompt as Administrator. One way to do this is to right-click the Windows icon and select "Command Prompt (Admin)". Say Yes to any security prompt.
+2. Type `net user Administrator /active:yes`.
+3. If that is successful, set a password for the Administrator with `net user Administrator *`.
+
+### Set up Windows Remote Management
+
+Powershell needs to be configured to allow remote access. This can be achieved using this script, which is included with this distribution as a file.  
+
+For further details, see the [Ansible Windows System Prep](http://docs.ansible.com/ansible/intro_windows.html#windows-system-prep) instructions.
+
 
 
 
