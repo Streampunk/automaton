@@ -103,8 +103,8 @@ To run this file, the simplest way is:
 An alternative approach is:
 
 1. Run Powershell as admininstrator or a command prompt with Administrator privileges. One way to do this is type "Powershell" in Cortana, right click "Windows Powershell" and choose "Run as administrator". 
-2. Copy the `[./windows_config/ConfigureRemotingForAnsible.ps1](./windows_config/ConfigureRemotingForAnsible.ps1)` file into the local folder.
-3. Run `powershell.exe -File ./windows_config/ConfigureRemotingForAnsible.ps1`. Note that you may need to configure powershell execution policy. 
+2. Copy the [`./windows_config/ConfigureRemotingForAnsible.ps1`](./windows_config/ConfigureRemotingForAnsible.ps1) file into the local folder.
+3. Run `powershell.exe -File ConfigureRemotingForAnsible.ps1`. Note that you may need to configure powershell execution policy. 
 
 For further details, see the [Ansible Windows System Prep](http://docs.ansible.com/ansible/intro_windows.html#windows-system-prep) instructions.
 
