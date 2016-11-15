@@ -81,6 +81,7 @@ For each host, the machines you want to control including the remote installatio
 
 1. Enable the administrator account if it is not already enabled and set a password. This allows remote execution of actions that require Administrator priveleges.
 2. Set up the [Windows Remote Management](https://msdn.microsoft.com/en-us/library/aa384291(v=vs.85).aspx) system with certificates that enable external remote control from ansible.
+3. Test the connection from the controller to the Windows machine.
 
 ### Enable the administrator account
 
@@ -107,6 +108,23 @@ An alternative approach is:
 3. Run `powershell.exe -File ConfigureRemotingForAnsible.ps1`. Note that you may need to configure powershell execution policy. 
 
 For further details, see the [Ansible Windows System Prep](http://docs.ansible.com/ansible/intro_windows.html#windows-system-prep) instructions.
+
+### Test the controller to host
+
+To test the connection from the controller to the host, edit the `ping_local` and `ping_admin` entries in the hosts file so that the `ansible_host=xxxx` as `xxxx` replaced with the host name or its IP address. Save the file and run ...
+
+```
+ansible ping_admin -k -m win_ping
+```
+
+When prompted for an SSH password, use the Administartor password for the host. A successful output looks like this:
+
+```
+ping_admin | SUCCESS => {
+    "changed" : false,
+    "ping": "pong"
+}
+```
 
 
 
