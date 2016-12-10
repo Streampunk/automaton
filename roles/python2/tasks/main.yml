@@ -1,4 +1,4 @@
 ---
-- name: Install python2
+- name: Install atom
   win_chocolatey:
-    name: python2
+    name: atom
