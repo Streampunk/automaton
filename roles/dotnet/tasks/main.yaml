@@ -2,6 +2,7 @@
 - name: Install DotNet 4.5.2
   win_chocolatey:
     name: dotnet4.5.2
+    become: true
   register: result
 - win_reboot:
   when: result.changed
