@@ -1,0 +1,14 @@
+---
+- name: Install MS build tools
+  win_chocolatey:
+    name: microsoft-build-tools
+- name: Check MSBuild install
+  win_shell: .\MSBuild /version
+  args:
+    chdir: C:\Program Files (x86)\MSBuild\14.0\Bin
+  register: msbuildout
+  changed_when: false
+- debug: msg="Checked the installed version is {{ msbuildout.stdout }}."
+- assert:
+    that:
+      - "'Build Engine version 14.0.' in msbuildout.stdout"

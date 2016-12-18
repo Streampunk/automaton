@@ -1,0 +1,4 @@
+---
+- name: Install atom
+  win_chocolatey:
+    name: atom

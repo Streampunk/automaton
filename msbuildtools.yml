@@ -1,0 +1,7 @@
+---
+- hosts: windows
+  any_errors_fatal: false
+  tasks:
+    - name: install MS build tools
+      win_chocolatey:
+        name: microsoft-build-tools

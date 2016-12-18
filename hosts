@@ -1,0 +1,8 @@
+[windows_admin]
+ping_admin ansible_host=192.168.150.19 ansible_user=Administrator
+ping_local ansible_host=192.168.150.19 ansible_user=nucty
+dumpty_admin ansible_host=172.29.213.19 ansible_user=Administrator
+dumpty_local ansible_host=172.29.213.19 ansible_user=dsi-user
+
+[servers]
+ping_admin

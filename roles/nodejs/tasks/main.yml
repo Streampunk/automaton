@@ -1,0 +1,14 @@
+---
+- name: install nodejs 4
+  win_chocolatey:
+    name: nodejs.install
+    version: 4.6.1
+    params: --allow-downgrade
+- name: Check nodejs install
+  win_command: node -v
+  register: nodev
+  changed_when: false
+- debug: msg="Checked the installed version is {{ nodev.stdout }}."
+- assert:
+    that:
+      - "'4.6.1' in nodev.stdout"
