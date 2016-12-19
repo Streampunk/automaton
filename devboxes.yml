@@ -1,5 +1,4 @@
 ---
 - hosts: servers
   roles:
-     - common
-     - developer
+     - atom

@@ -1,7 +1,4 @@
 ---
-- name: install bonjour
-  win_chocolatey:
-    name: bonjour
 - name: Set up Windows firewall to alllow ping IPv4
   win_command: 'netsh advfirewall firewall add rule name=ICMP-V4 dir=in action=allow protocol=icmpv4'
   register: result4

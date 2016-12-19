@@ -2,5 +2,5 @@
 dependencies:
   - nodejs
   - python2
-  - bonjour
+  - ping
   - msbuildtools

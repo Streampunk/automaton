@@ -2,6 +2,7 @@
 - name: Install MS build tools
   win_chocolatey:
     name: microsoft-build-tools
+    become: true
 - name: Check MSBuild install
   win_shell: .\MSBuild /version
   args:
