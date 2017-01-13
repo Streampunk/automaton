@@ -1,0 +1,4 @@
+---
+- hosts: video_edge
+  roles:
+     - common

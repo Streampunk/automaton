@@ -1,8 +1,42 @@
-[windows_admin]
-ping_admin ansible_host=192.168.150.19 ansible_user=Administrator
-ping_local ansible_host=192.168.150.19 ansible_user=nucty
-dumpty_admin ansible_host=172.29.213.19 ansible_user=Administrator
-dumpty_local ansible_host=172.29.213.19 ansible_user=dsi-user
+[windows]
+nucty ansible_user=nucty
+mucty ansible_user=mucty
+humpty ansible_user=dsi-user
+dumpty ansible_user=dsi-user
+grumpty ansible_user=dsi-user
+frumpty ansible_user=dsi-user
+booky ansible_user=IPPOCUser
+sooty ansible_user=IPPOCUser
+
+[ubuntu]
+colin
+
+[raspbian]
+cheerypi ansible_user=pi
+rhubarbpi ansible_user=pi
+applepi ansible_user=pi
 
 [servers]
-ping_local
+humpty
+dumpty
+# grumpty
+# frumpty
+
+[video_edge]
+nucty
+mucty
+
+[field]
+booky
+sooty
+colin
+
+[audio_edge]
+rhubarbpi
+cherrypi
+
+[monitoring]
+onesie
+
+[clock]
+applepi
