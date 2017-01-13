@@ -126,5 +126,31 @@ ping_admin | SUCCESS => {
 }
 ```
 
+## Running playbooks
+
+### Inventory
+
+The `hosts` file provides an inventory for the systems in a PoC lab. Computers to be automatically configured are listed in the `windows`, `rpi` or `linux` group by their operating system. Common connection parameters are found in the `group_vars` by operating systems. Each host in the inventory also appears in a classification that determines the business purpose of the device. These include:
+
+* _servers_ - Backend devices, typically rack mounted in a server room, intended for intensive compute of storage applications.
+* _edges_ - Computers used as edge devices, used to connect to input and output audio and video devices.
+* _devs_ - Computers used for development of code, software testing and hands-on triage.
+* _clock_ - Computer used as a time server, such as a raspberry pi with a GPS hat.
+
+All of the above roles have apart from _clock_ share a _common_ core of tools, as described by the common role in the next section.
+
+The inventory has been written on the assumption that all the machines to be configured have been pre-assigned a name via DNS and that each system is up and running.
+
+### Roles
+
+Roles equivalent to the machine classifications have been defined, with role dependency as follows:
+
+* _common_ - MS build tool, Node.JS, enable ping, python 2.7
+
+### Playbooks
+
+
+
+### Roles
 
 
