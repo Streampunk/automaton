@@ -1,0 +1,14 @@
+---
+- name: Install netadon and gonzales if missing.
+  win_shell: git clone https://github.com/Streampunk/netadon
+  args:
+    chdir: Documents
+    creates: netadon
+- name: Update netadon if present.
+  win_shell: git pull
+  args:
+    chdir: Documents\netadon
+- name: Rebuild netadon and update dependencies.
+  win_shell: npm install
+  args:
+    chdir: Documents\netadon
