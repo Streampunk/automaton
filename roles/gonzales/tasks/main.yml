@@ -3,7 +3,7 @@
   win_shell: git clone https://github.com/Streampunk/netadon
   args:
     chdir: Documents
-    creates: netadon
+    creates: Documents\netadon
 - name: Update netadon if present.
   win_shell: git pull
   args:
@@ -12,3 +12,7 @@
   win_shell: npm install
   args:
     chdir: Documents\netadon
+- name: Rebuild gonzales and update dependencies.
+  win_shell: npm install
+  args:
+    chdir: Documents\netadon\scratch
