@@ -2,3 +2,4 @@
 - hosts: servers
   roles:
      - common
+     - speedtest
