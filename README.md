@@ -77,19 +77,11 @@ pip install "pywinrm>=0.1.1"
 
 ## Windows hosts
 
-For each host, the machines you want to control including the remote installation and management of consoles, must do two things:
+For each host, the machines you want to control including the remote installation and management of consoles, must do two things and a test:
 
-1. Enable the administrator account if it is not already enabled and set a password. This allows remote execution of actions that require Administrator priveleges.
+1. Add the user that ansible connections are to be made through to the _Administrators_ group. Use the _User Accounts_ tool from the Control Panel to do this and click on _Change Account Type_, selecting Administrator.
 2. Set up the [Windows Remote Management](https://msdn.microsoft.com/en-us/library/aa384291(v=vs.85).aspx) system with certificates that enable external remote control from ansible.
 3. Test the connection from the controller to the Windows machine.
-
-### Enable the administrator account
-
-On many Windows client systems, the Windows administrator account is disabled by default. It can be enabled to allow Ansible to remotely perform operations that require Administrator privileges. These are the instructions for how to do that.
-
-1. Open a Windows Command Prompt as Administrator. One way to do this is to right-click the Windows icon and select "Command Prompt (Admin)". Say Yes to any security prompt.
-2. Type `net user Administrator /active:yes`.
-3. If that is successful, set a password for the Administrator with `net user Administrator *`.
 
 ### Set up Windows Remote Management
 
@@ -105,7 +97,7 @@ An alternative approach is:
 
 1. Run Powershell as admininstrator or a command prompt with Administrator privileges. One way to do this is type "Powershell" in Cortana, right click "Windows Powershell" and choose "Run as administrator". 
 2. Copy the [`./windows_config/ConfigureRemotingForAnsible.ps1`](./windows_config/ConfigureRemotingForAnsible.ps1) file into the local folder.
-3. Run `powershell.exe -File ConfigureRemotingForAnsible.ps1`. Note that you may need to configure powershell execution policy. 
+3. Run `powershell.exe -File ConfigureRemotingForAnsible.ps1 -Verbose`. Note that you may need to configure powershell execution policy. 
 
 For further details, see the [Ansible Windows System Prep](http://docs.ansible.com/ansible/intro_windows.html#windows-system-prep) instructions.
 
