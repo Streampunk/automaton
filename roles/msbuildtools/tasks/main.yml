@@ -1,7 +1,7 @@
 ---
-- name: Install MS build tools
+- name: Install Visual C++ build tools
   win_chocolatey:
-    name: microsoft-build-tools
+    name: vcbuildtools
     become: true
 - name: Check MSBuild install
   win_shell: .\MSBuild /version
