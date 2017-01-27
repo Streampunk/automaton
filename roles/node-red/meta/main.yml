@@ -1,0 +1,5 @@
+---
+dependencies:
+  - nodejs
+  - python2
+  - msbuildtools

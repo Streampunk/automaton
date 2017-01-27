@@ -1,0 +1,11 @@
+---
+- name: Install node-red globally.
+  win_shell: npm install -g node-red
+- name: Set up MS Build Tools 2015 for node-gyp compiles.
+  win_shell: npm config set msvs_version 2015 --global
+- name: Configure threadpool size.
+  win_environment:
+    state: present
+    level: machine
+    name: UV_THREADPOOL_SIZE
+    value: 32

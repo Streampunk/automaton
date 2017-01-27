@@ -1,6 +1,4 @@
 ---
 dependencies:
-  - nodejs
-  - python2
   - ping
-  - msbuildtools
+  - node-red
