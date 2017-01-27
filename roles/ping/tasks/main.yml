@@ -1,12 +1,12 @@
 ---
-- name: Set up Windows firewall to alllow ping IPv4
+- name: Set up Windows firewall to allow ping IPv4
   win_command: 'netsh advfirewall firewall add rule name=ICMP-V4 dir=in action=allow protocol=icmpv4'
   register: result4
   changed_when: false
 - assert:
     that:
       - "'Ok.' in result4.stdout"
-- name: Set up Windows firewall to alllow ping IPv6
+- name: Set up Windows firewall to allow ping IPv6
   win_command: 'netsh advfirewall firewall add rule name=ICMP-V6 dir=in action=allow protocol=icmpv6'
   register: result6
   changed_when: false
