@@ -1,0 +1,5 @@
+---
+- name: Install iperf3
+  win_chocolatey:
+    name: iperf3
+    become: true
