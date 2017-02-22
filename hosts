@@ -6,7 +6,7 @@ dumpty ansible_user=dsi-user
 grumpty ansible_user=dsi-user
 frumpty ansible_user=dsi-user
 booky ansible_user=IPPOCUser
-sooty ansible_user=IPPOCUser
+sooty ansible_user=deux
 
 [ubuntu]
 colin
@@ -29,7 +29,7 @@ mucty
 [field]
 booky
 sooty
-colin
+# colin
 
 [audio_edge]
 rhubarbpi
