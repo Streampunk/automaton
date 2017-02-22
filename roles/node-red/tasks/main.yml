@@ -9,3 +9,7 @@
     level: machine
     name: UV_THREADPOOL_SIZE
     value: 32
+- name: Remove local node-red folder.
+  win_file:
+    path: C:\Users\{{ansible-user-id}}\.node-red
+    state: absent
