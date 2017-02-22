@@ -11,5 +11,5 @@
     value: 32
 - name: Remove local node-red folder.
   win_file:
-    path: C:\Users\{{ansible-user-id}}\.node-red
+    path: C:\Users\{{ansible_user_id}}\.node-red
     state: absent
