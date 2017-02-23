@@ -17,4 +17,4 @@
     register: result
 - name: Reboot after BMD install
   win_reboot:
-    when: result.changed
+  when: result.changed
