@@ -7,3 +7,11 @@
   win_unzip:
     src: c:\Temp\Blackmagic_Desktop_Video_Windows_10.8.4.zip
     dest: c:\Temp\bmd_tools
+- name: Install Blackmagic MSI
+  win_package:
+    path: 'c:\\Temp\\bmd_tools\\Desktop Video Installer v10.8.4.msi'
+    product_id: '{6A663D66-4AAA-45AF-B7C1-7EB7BAF6FAE3}'
+    state: present
+    become: true
+- name: Reboot after BMD install
+  win_reboot:
