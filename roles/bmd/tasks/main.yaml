@@ -14,7 +14,7 @@
     product_id: '{6A663D66-4AAA-45AF-B7C1-7EB7BAF6FAE3}'
     state: present
     become: true
-    register: result
+  register: result
 - name: Reboot after BMD install
   win_reboot:
   when: result.changed
