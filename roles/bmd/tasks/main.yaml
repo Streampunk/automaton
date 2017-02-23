@@ -1,0 +1,9 @@
+---
+- name: Copy over Blackmagic Desktop Video Windows tools
+  win_copy:
+    dest: c:\Temp\Blackmagic_Desktop_Video_Windows_10.8.4.zip
+    src: distros/bmd/Blackmagic_Desktop_Video_Windows_10.8.4.zip
+- name: Unzip BMD tools
+  win_unzip:
+    src: c:\Temp\Blackmagic_Desktop_Video_Windows_10.8.4.zip
+    dest: c:\Temp\bmd_tools
