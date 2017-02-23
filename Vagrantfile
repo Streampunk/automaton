@@ -73,5 +73,6 @@ Vagrant.configure("2") do |config|
     sudo pip install --upgrade pip
     sudo pip install "pywinrm>=0.1.1"
     sudo apt-get install -y avahi-daemon avahi-discover libnss-mdns
+    sudo apt-get install -y git
   SHELL
 end
