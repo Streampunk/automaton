@@ -4,7 +4,7 @@ mucty ansible_user=mucty
 humpty ansible_user=dsi-user
 dumpty ansible_user=dsi-user
 grumpty ansible_user=dsi-user
-frumpty ansible_user=dsi-user
+bumpty ansible_user=dsi-user
 booky ansible_user=IPPOCUser
 sooty ansible_user=deux
 
@@ -20,7 +20,7 @@ applepi ansible_user=pi
 humpty
 dumpty
 grumpty
-# frumpty
+bumpty
 
 [video_edge]
 nucty
