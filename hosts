@@ -19,7 +19,7 @@ applepi ansible_user=pi
 [servers]
 humpty
 dumpty
-# grumpty
+grumpty
 # frumpty
 
 [video_edge]
