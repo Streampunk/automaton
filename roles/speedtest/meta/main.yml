@@ -3,3 +3,4 @@ dependencies:
   - gonzales
   - atom
   - iperf3
+  - wireshark
