@@ -1,14 +1,5 @@
 ---
-- name: install nodejs 6
+- name: install wireshark
   win_chocolatey:
-    name: nodejs.install
-    version: 6.9.4
+    name: wireshark
     become: true
-- name: Check nodejs install
-  win_command: node -v
-  register: nodev
-  changed_when: false
-- debug: msg="Checked the installed version is {{ nodev.stdout }}."
-- assert:
-    that:
-      - "'6.9.4' in nodev.stdout"
