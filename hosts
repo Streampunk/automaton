@@ -7,6 +7,8 @@ grumpty ansible_user=dsi-user
 bumpty ansible_user=dsi-user
 booky ansible_user=IPPOCUser
 sooty ansible_user=deux
+demo1 ansible_user=dsi-user
+demo2 ansible_user=dsi-user
 
 [ubuntu]
 colin
@@ -30,6 +32,8 @@ mucty
 booky
 sooty
 # colin
+demo1
+demo2
 
 [audio_edge]
 rhubarbpi
