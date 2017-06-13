@@ -7,8 +7,8 @@ grumpty ansible_user=dsi-user
 bumpty ansible_user=dsi-user
 booky ansible_user=IPPOCUser
 sooty ansible_user=deux
-demo1 ansible_user=dsi-user
-demo2 ansible_user=dsi-user
+demo1 ansible_user=DSI-User
+demo2 ansible_user=DSI-User
 
 [ubuntu]
 colin
@@ -30,8 +30,8 @@ mucty
 
 [field]
 booky
-sooty
-# colin
+# sooty
+#colin
 demo1
 demo2
 
