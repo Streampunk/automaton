@@ -1,17 +1,17 @@
 ---
 - name: Copy over Blackmagic Desktop Video Windows tools
   win_copy:
-    dest: "{{ ansible_user_dir }}\\Blackmagic_Desktop_Video_Windows_10.8.4.zip"
-    src: distros/bmd/Blackmagic_Desktop_Video_Windows_10.8.4.zip
+    dest: "{{ ansible_user_dir }}\\Blackmagic_Desktop_Video_Windows_10.9.3.zip"
+    src: distros/bmd/Blackmagic_Desktop_Video_Windows_10.9.3.zip
 - name: Unzip BMD tools
   win_unzip:
-    src: "{{ ansible_user_dir }}\\Blackmagic_Desktop_Video_Windows_10.8.4.zip"
+    src: "{{ ansible_user_dir }}\\Blackmagic_Desktop_Video_Windows_10.9.3.zip"
     dest: "{{ ansible_user_dir }}\\bmd_tools"
-    creates: "{{ ansible_user_dir }}\\bmd_tools\\Desktop Video Installer v10.8.4.msi"
+    creates: "{{ ansible_user_dir }}\\bmd_tools\\Desktop Video Installer v10.9.3.msi"
 - name: Install Blackmagic MSI
   win_package:
-    path: "{{ ansible_user_dir }}\\bmd_tools\\Desktop Video Installer v10.8.4.msi"
-    product_id: '{6A663D66-4AAA-45AF-B7C1-7EB7BAF6FAE3}'
+    path: "{{ ansible_user_dir }}\\bmd_tools\\Desktop Video Installer v10.9.3.msi"
+    product_id: '{3A5C5F3F-83C5-4168-8645-12615D2DDB4D}'
     state: present
     become: true
     arguments: /norestart

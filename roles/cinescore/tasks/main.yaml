@@ -1,0 +1,33 @@
+---
+- name: Copy over Cinescore
+  win_copy:
+    dest: "{{ ansible_user_dir }}\\CinegyCinescore_10.4.136.185.zip"
+    src: distros/cinegy/CinegyCinescore_10.4.136.185.zip
+- name: Copy over Cinescore Samples
+  win_copy:
+    dest: "{{ ansible_user_dir }}\\CinegyCinescore_samples_1.63.0.385.zip"
+    src: distros/cinegy/CinegyCinescore_samples_1.63.0.385.zip
+- name: Unzip Cinescore
+  win_unzip:
+    src: "{{ ansible_user_dir }}\\CinegyCinescore_10.4.136.185.zip"
+    dest: "{{ ansible_user_dir }}\\cinegy_tools"
+    creates: "{{ ansible_user_dir }}\\cinegy_tools\\CinegyCinescoreSetup.msi"
+- name: Unzip Cinescore Samples
+  win_unzip:
+    src: "{{ ansible_user_dir }}\\CinegyCinescore_samples_1.63.0.385.zip"
+    dest: "{{ ansible_user_dir }}\\cinegy_tools"
+    creates: "{{ ansible_user_dir }}\\cinegy_tools\\CinegyCinescoreSamplesSetup.msi"
+- name: Install Cinescore
+  win_package:
+    path: "{{ ansible_user_dir }}\\cinegy_tools\\CinegyCinescoreSetup.msi"
+    product_id: '{CA74640B-0EB1-4561-A9BF-6B1548C157A6}'
+    state: present
+    become: true
+    arguments: /norestart
+- name: Install Cinescore Samples
+  win_package:
+    path: "{{ ansible_user_dir }}\\cinegy_tools\\CinegyCinescoreSamplesSetup.msi"
+    product_id: '{E4802DE7-25F6-4855-A772-4B473365B4C4}'
+    state: present
+    become: true
+    arguments: /norestart
