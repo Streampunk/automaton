@@ -2,3 +2,4 @@
 dependencies:
   - ping
   - node-red
+  - cinescore
