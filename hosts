@@ -1,11 +1,12 @@
 [windows]
 nucty ansible_user=nucty
-mucty ansible_user=mucty
+mucty ansible_user=DSI-User
+lucty ansible_user=DSI-User
 humpty ansible_user=dsi-user
 dumpty ansible_user=dsi-user
 grumpty ansible_user=dsi-user
 bumpty ansible_user=dsi-user
-booky ansible_user=IPPOCUser
+booky ansible_user=DSI-User
 sooty ansible_user=deux
 demo1 ansible_user=DSI-User
 demo2 ansible_user=DSI-User
@@ -27,6 +28,7 @@ bumpty
 [video_edge]
 nucty
 mucty
+lucty
 
 [field]
 booky

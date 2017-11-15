@@ -1,9 +1,10 @@
 ---
-- name: install nodejs 6
+- name: install nodejs 8
   win_chocolatey:
     name: nodejs.install
-    version: 6.9.4
+    version: 8.9.1
     become: true
+    state: latest
 - name: Check nodejs install
   win_command: node -v
   register: nodev
@@ -11,4 +12,4 @@
 - debug: msg="Checked the installed version is {{ nodev.stdout }}."
 - assert:
     that:
-      - "'6.9.4' in nodev.stdout"
+      - "'8.9.1' in nodev.stdout"

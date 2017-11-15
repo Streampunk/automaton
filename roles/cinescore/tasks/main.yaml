@@ -31,3 +31,13 @@
     state: present
     become: true
     arguments: /norestart
+- name: Copy over Cinescore Pro
+  win_copy:
+    dest: "{{ ansible_user_dir }}\\CinegyCinescorePro_10.4.154.403.zip"
+    src: distros/cinegy/CinegyCinescorePro_10.4.154.403
+- name: Unzip Cinescore Pro
+  win_unzip:
+    src: "{{ ansible_user_dir }}\\CinegyCinescorePro_10.4.154.403.zip" 
+    dest: "{{ ansible_user_dir }}\\cinescore_pro"
+    creates: "{{ ansible_user_dir}}\\cinescore_pro\\CinegyCinescorePro_10.4.154.403"
+  
